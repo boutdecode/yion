@@ -21,7 +21,8 @@ const {
   bodyParser,
   logger,
   session,
-  encoding
+  encoding,
+  i18n
 } = require('@boutdecode/yion')
 
 const app = createApp()
@@ -31,6 +32,7 @@ app.use(logger())
 app.use(bodyParser())
 app.use(session())
 app.use(encoding())
+app.use(i18n())
 
 app.get('/', ({ res }) => {
   res

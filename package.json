@@ -21,6 +21,7 @@
   "dependencies": {
     "@boutdecode/body-parser": "^1.0.2",
     "@boutdecode/encoding": "^2.0.1",
+    "@boutdecode/i18n": "^2.0.0",
     "@boutdecode/logger": "^1.0.0",
     "@boutdecode/session": "^2.0.1",
     "yion": "^3.0.1"
