@@ -1,0 +1,28 @@
+{
+  "name": "@boutdecode/yion",
+  "version": "1.0.0",
+  "description": "Yion bundle by boutdecode",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run cs",
+    "fix-cs": "eslint --fix index.js",
+    "cs": "eslint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boutdecode/yion.git"
+  },
+  "author": "Kevin Balicot <kevinbalicot@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-standard": "^17.1.0"
+  },
+  "dependencies": {
+    "@boutdecode/body-parser": "^1.0.2",
+    "@boutdecode/encoding": "^2.0.1",
+    "@boutdecode/logger": "^1.0.0",
+    "@boutdecode/session": "^2.0.1",
+    "yion": "^3.0.1"
+  }
+}
