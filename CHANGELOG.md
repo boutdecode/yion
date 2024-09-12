@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/boutdecode/yion/compare/v1.2.0...v1.2.1) (2024-09-12)
+
+
+### Bug Fixes
+
+* Asset plugin and order plugins for bootstrap ([5677068](https://github.com/boutdecode/yion/commit/5677068882038e82226417bbbecb084598e9032f))
+
 # [1.2.0](https://github.com/boutdecode/yion/compare/v1.1.0...v1.2.0) (2024-09-12)
 
 
