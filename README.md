@@ -22,7 +22,8 @@ const {
   logger,
   session,
   encoding,
-  i18n
+  i18n,
+  assets
 } = require('@boutdecode/yion')
 
 const app = createApp()
@@ -33,6 +34,7 @@ app.use(bodyParser())
 app.use(session())
 app.use(encoding())
 app.use(i18n())
+app.use(assets())
 
 app.get('/', ({ res }) => {
   res
@@ -53,6 +55,23 @@ app.get('/', ({ res }) => {
 })
 
 server.listen(8080)
+```
+
+OR you can bootstrap application in one line
+
+```javascript
+const { bootstrap } = require('@boutdecode/yion')
+
+bootstrap({
+  api: true,
+  view: 'jsx',
+  store: true,
+  config: {
+    application: {
+      port: 8080
+    }
+  }
+})
 ```
 
 ## Tests

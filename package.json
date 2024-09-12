@@ -23,7 +23,11 @@
     "@boutdecode/encoding": "^2.0.2",
     "@boutdecode/i18n": "^2.0",
     "@boutdecode/logger": "^1.0",
+    "@boutdecode/open-api": "^1.2.0",
     "@boutdecode/session": "^2.0",
+    "@boutdecode/store": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "glob": "^11.0.0",
     "yion": "^3.0"
   }
 }

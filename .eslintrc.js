@@ -6,6 +6,6 @@ module.exports = {
     node: true
   },
   rules: {
-    "no-console": 2
+    'no-console': 2
   }
 }
