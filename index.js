@@ -36,6 +36,14 @@ const bootstrap = ({
 
   const server = createServer(...apps)
 
+  app.use(container(config))
+  app.use(logger())
+  app.use(bodyParser())
+  app.use(encoding())
+  app.use(session())
+  app.use(assets(config.assets))
+  app.use(i18n(config.translation))
+
   if (view) {
     const plugin = require(`./plugins/${view}`)
     app.use(plugin(config.view))
@@ -46,13 +54,6 @@ const bootstrap = ({
     app.use(plugin(config.store))
   }
 
-  app.use(container(config))
-  app.use(logger())
-  app.use(bodyParser())
-  app.use(encoding())
-  app.use(session())
-  app.use(assets(config.assets))
-  app.use(i18n(config.translation))
   plugins.forEach(plugin => app.use(plugin(config)))
   app.use(moduleLoader({ modules: config.modules.modules, config, app, api }))
 
