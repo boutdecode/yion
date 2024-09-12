@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/boutdecode/yion/compare/v1.1.0...v1.2.0) (2024-09-12)
+
+
+### Bug Fixes
+
+* Update dependencies version ([0cf9348](https://github.com/boutdecode/yion/commit/0cf9348b6f95d622d00e5ea1862ed64fc1dce83b))
+* Update deps ([3c648c8](https://github.com/boutdecode/yion/commit/3c648c85560a5aaa3a058d5e43489e46559e6fff))
+
+
+### Features
+
+* Add bootstrap function ([cdbcf4b](https://github.com/boutdecode/yion/commit/cdbcf4b7953b8f83876d57c9afed6622fbcb57cb))
+
 ## [1.1.1](https://github.com/boutdecode/yion/compare/v1.1.0...v1.1.1) (2024-09-12)
 
 
