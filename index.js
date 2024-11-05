@@ -9,10 +9,7 @@ const i18n = require('@boutdecode/i18n')
 const assets = require('./plugins/assets')
 
 const bootstrap = ({
-  api = true,
   config = {},
-  view = 'jsx',
-  store = true,
   plugins = []
 }) => {
   const container = require('./plugins/container')
@@ -22,13 +19,16 @@ const bootstrap = ({
   const app = createApp()
   apps.push(app)
 
-  if (api) {
+  let api
+  if (config.api) {
     const { createApi } = require('@boutdecode/open-api')
     const apiDoc = require('@boutdecode/open-api/plugins/open-api-doc')
     const cors = require('@boutdecode/open-api/plugins/cors')
 
     api = createApi({ openapi: config.api })
-    api.use(cors(config.cors))
+    if (config.cors) {
+      api.use(cors(config.cors))
+    }
 
     app.use(apiDoc(api))
     apps.push(api)
@@ -41,15 +41,19 @@ const bootstrap = ({
   app.use(bodyParser())
   app.use(encoding())
   app.use(session())
-  app.use(assets(config.assets))
-  app.use(i18n(config.translation))
+  if (config.assets) {
+    app.use(assets(config.assets))
+  }
+  if (config.translation) {
+    app.use(i18n(config.translation))
+  }
 
-  if (view) {
-    const plugin = require(`./plugins/${view}`)
+  if (config.view) {
+    const plugin = require(`./plugins/${config.view?.render || 'jsx'}`)
     app.use(plugin(config.view))
   }
 
-  if (store) {
+  if (config.store) {
     const { plugin } = require('@boutdecode/store')
     app.use(plugin(config.store))
   }
