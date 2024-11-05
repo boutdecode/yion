@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/boutdecode/yion/compare/v1.2.1...v1.2.2) (2024-11-05)
+
+
+### Bug Fixes
+
+* clear options ([e3ccac2](https://github.com/boutdecode/yion/commit/e3ccac2c21225d5a6a3b1473ba95e7bbdaaf0738))
+
 ## [1.2.1](https://github.com/boutdecode/yion/compare/v1.2.0...v1.2.1) (2024-09-12)
 
 
