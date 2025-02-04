@@ -15,13 +15,17 @@ module.exports = ({
     const modulePath = path.resolve(modulesFolder, module)
     const configFiles = globSync(`${modulePath}/config/**/*.{js,ts}`)
     const middlewareFiles = globSync(`${modulePath}/middlewares/**/*.{js,ts}`)
-    const operationFiles = globSync(`${modulePath}/operators/**/*.{js,ts}`)
+    const operationFiles = globSync(`${modulePath}/{operators,pages}/**/*.{js,ts}`)
 
     // eslint-disable-next-line no-console
     console.log(`⚙️ Configuring "${module}" module...`)
     for (const file of configFiles) {
       try {
-        const module = require(file)
+        let module = require(file)
+        if (module.__esModule) {
+          module = module.default
+        }
+
         if (typeof module === 'function') {
           module({ ...contexts, config })
         }
@@ -36,7 +40,12 @@ module.exports = ({
     console.log(`📦 Loading "${module}" module...`)
     for (const file of middlewareFiles) {
       try {
-        const { context, handler } = require(file)
+        let module = require(file)
+        if (module.__esModule) {
+          module = module.default
+        }
+
+        const { context, handler } = module
         if (typeof handler === 'function') {
           contexts[context].use(handler)
         }
@@ -49,14 +58,18 @@ module.exports = ({
 
     for (const file of operationFiles) {
       try {
-        const { context, route, schema = {}, handler } = require(file)
+        let module = require(file)
+        if (module.__esModule) {
+          module = module.default
+        }
+        const { context, route, input, output, security, openapi, handler } = module
         const { method, pattern } = route
 
         if (typeof handler === 'function') {
           if (context === 'app') {
             app[method](pattern, handler)
           } else if (context === 'api') {
-            api[method](pattern, schema, handler)
+            api[method](pattern, { input, output, security, openapi }, handler)
           }
         }
       } catch (error) {

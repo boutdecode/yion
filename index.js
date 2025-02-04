@@ -30,7 +30,7 @@ const bootstrap = ({
       api.use(cors(config.cors))
     }
 
-    app.use(apiDoc(api))
+    app.use(apiDoc(api, config.api))
     apps.push(api)
   }
 
