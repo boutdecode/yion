@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/boutdecode/yion/compare/v1.2.2...v2.0.0) (2025-02-04)
+
+
+### Features
+
+* Update dependances, and import support ([ff092c5](https://github.com/boutdecode/yion/commit/ff092c51ff491834c39ebc5198b20ec12532863d))
+
+
+### BREAKING CHANGES
+
+* pass @boutdecode/open-api to version 2
+
 ## [1.2.2](https://github.com/boutdecode/yion/compare/v1.2.1...v1.2.2) (2024-11-05)
 
 
