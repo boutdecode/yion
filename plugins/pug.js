@@ -1,6 +1,14 @@
 const path = require('node:path')
 const pug = require('pug')
 
+/**
+ * Pug plugin
+ * @param {
+ *   folder: string,
+ *   globals: Object.<string, *>
+ * }
+ * @returns {(function(*, Function): Promise<void>)}
+ */
 module.exports = ({ folder = 'templates', globals = {} } = {}) => {
   const templateFolder = path.resolve(process.cwd(), folder)
 
@@ -48,12 +56,12 @@ module.exports = ({ folder = 'templates', globals = {} } = {}) => {
         return i18n.t(container.get(`application.${name}`, defaultValue), { lng: templateFunctions.locale })
       },
 
-      asset (name) {
+      assets (name, type = 'script') {
         if (!assets) {
           throw new Error('assets is not available')
         }
 
-        return assets.get(name)
+        return assets.get(name, type)
       }
     }
 

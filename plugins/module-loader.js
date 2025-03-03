@@ -1,6 +1,18 @@
 const path = require('node:path')
 const { globSync } = require('glob')
 
+/**
+ * Module loader
+ * @param {
+ *   modules: string[],
+ *   folder: string,
+ *   config: Object.<string, *>,
+ *   app: Application,
+ *   api: Api
+ * }
+ *
+ * @returns {(function(*, Function): void)}
+ */
 module.exports = ({
   modules = [],
   folder = 'modules',
@@ -13,9 +25,9 @@ module.exports = ({
 
   for (const module of modules) {
     const modulePath = path.resolve(modulesFolder, module)
-    const configFiles = globSync(`${modulePath}/config/**/*.{js,ts}`)
-    const middlewareFiles = globSync(`${modulePath}/middlewares/**/*.{js,ts}`)
-    const operationFiles = globSync(`${modulePath}/{operators,pages}/**/*.{js,ts}`)
+    const configFiles = globSync(`${modulePath}/config/**/*.{js,ts,mjs,mts}`)
+    const middlewareFiles = globSync(`${modulePath}/middlewares/**/*.{js,ts,mjs,mts}`)
+    const operationFiles = globSync(`${modulePath}/{operators,pages}/**/*.{js,ts,mjs,mts}`)
 
     // eslint-disable-next-line no-console
     console.log(`⚙️ Configuring "${module}" module...`)
@@ -63,7 +75,7 @@ module.exports = ({
           module = module.default
         }
         const { context, route, input, output, security, openapi, handler } = module
-        const { method, pattern } = route
+        const { method = 'get', pattern } = route
 
         if (typeof handler === 'function') {
           if (context === 'app') {

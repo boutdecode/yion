@@ -5,7 +5,7 @@ const container = {
 
   /**
    * Set box content
-   * @param {Object} items
+   * @param {Object.<string, *>} items
    * @param {Object} [options={}]
    * @param {boolean} [options.immutable=true] Set content immutable
    */
@@ -61,7 +61,7 @@ const container = {
   /**
    * Search something into tree
    * @param {string} name
-   * @param {object} [tree=null]
+   * @param {Object.<string, *> | null} [tree=null]
    *
    * @return {*}
    */
@@ -97,7 +97,7 @@ const container = {
 
   /**
    * Get items
-   * @return {object}
+   * @return {Object.<string, *>}
    */
   get items () {
     return this._items
@@ -109,6 +109,14 @@ const container = {
   }
 }
 
+/**
+ * Container plugin
+ * @param {Object.<string, *>} state
+ * @param {Object} [options={}]
+ * @param {boolean} [options.immutable=true] Set content immutable
+ *
+ * @returns {(function(*, Function): void)}
+ */
 module.exports = (state = {}, { immutable = true } = {}) => (context, next) => {
   if (!container._init) {
     container.set(state, { immutable })

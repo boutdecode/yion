@@ -1,5 +1,12 @@
 const path = require('node:path')
 
+/**
+ * Assets plugin
+ * @param {
+ *     folder: string
+ * } folder
+ * @returns {(function(*, Function): void)}
+ */
 module.exports = ({ folder = 'public' } = {}) => {
   const assetsFolder = path.resolve(process.cwd(), folder)
   let manifest = {}
@@ -13,8 +20,16 @@ module.exports = ({ folder = 'public' } = {}) => {
 
   return (context, next) => {
     context.set('assets', {
-      get (name) {
-        return manifest[name] ? `/${manifest[name].file}` : null
+      get (name, type = 'script') {
+        for (const asset in manifest) {
+          if (manifest[asset].name === name) {
+            return type === 'script'
+              ? manifest[asset].file
+              : manifest[asset].css
+          }
+        }
+
+        return null
       }
     })
 
