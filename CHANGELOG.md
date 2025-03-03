@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/boutdecode/yion/compare/v2.0.0...v2.1.0) (2025-03-03)
+
+
+### Features
+
+* Add CLI ([d514613](https://github.com/boutdecode/yion/commit/d5146131cc3317bd0c04c6fbbad205a4ba890521))
+
 # [2.0.0](https://github.com/boutdecode/yion/compare/v1.2.2...v2.0.0) (2025-02-04)
 
 
