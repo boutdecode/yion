@@ -2,20 +2,27 @@
   "name": "@boutdecode/yion",
   "version": "1.2.3",
   "description": "Yion bundle by boutdecode",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "npm run lint",
-    "lint": "eslint plugins index.js"
+    "lint": "eslint plugins index.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boutdecode/yion.git"
   },
+  "type": "module",
   "author": "Kevin Balicot <kevinbalicot@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "yion": "bin/yion.ts"
+  },
   "devDependencies": {
+    "@types/node": "^22.13.8",
+    "@types/pug": "^2.0.10",
     "eslint": "^8.44.0",
-    "eslint-config-standard": "^17.1.0"
+    "eslint-config-standard": "^17.1.0",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "@boutdecode/body-parser": "^1.0",
